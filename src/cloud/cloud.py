@@ -1,5 +1,5 @@
-from services.cloud.db import init_db, insert_data, fetch_all_data
-from services.platform.platform import process_and_redirect
+from src.cloud.db import init_db, insert_data, fetch_all_data
+from src.platform.platform import process_and_redirect
 
 def store_data(data):
     """Stocke les données dans le cloud et les redirige vers la plateforme."""

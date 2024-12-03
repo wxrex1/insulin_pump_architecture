@@ -1,5 +1,5 @@
-from services.platform.dexcom_follow import notify_follow
-from services.platform.dexcom_clarity import notify_clarity
+from src.platform.dexcom_follow import notify_follow
+from src.platform.dexcom_clarity import notify_clarity
 
 def process_and_redirect(data):
     """Redirige les données vers Dexcom Follow et Dexcom Clarity."""

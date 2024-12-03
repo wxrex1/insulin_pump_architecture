@@ -1,4 +1,4 @@
-from services.cloud.cloud import store_data
+from src.cloud.cloud import store_data
 
 def process_data(data):
     """Traite les données du capteur et les redirige vers le cloud."""

@@ -1,7 +1,7 @@
 # insulin_pump_architecture
 Commandes principales
 Initialiser la base de données :
-python -m services.cloud.db
+python -m src.cloud.db
 
 Lancer le projet :
 python main.py

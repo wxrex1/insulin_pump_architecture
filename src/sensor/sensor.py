@@ -1,5 +1,5 @@
 import random
-from services.receiver.receiver import process_data
+from src.receiver.receiver import process_data
 
 def generate_sensor_data():
     """Génère des données aléatoires de glucose."""
