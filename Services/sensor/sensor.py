@@ -1,28 +1,27 @@
-# services/sensor/sensor.py
-
 import random
-import time
-from .config import SensorConfig
+import json
+from services.receiver.receiver import process_data
 
-class InsulinPumpSensor:
-    def __init__(self, config: SensorConfig):
-        self.config = config
-        self.is_active = False
+def generate_sensor_data():
+    """Génère des données aléatoires de glucose."""
+    glucose_level = random.uniform(50, 250)
+    status = "normal"
+    if glucose_level < 70:
+        status = "hypoglycemia"
+    elif glucose_level > 180:
+        status = "hyperglycemia"
+    return {
+        "glucose_level": round(glucose_level, 2),
+        "status": status
+    }
 
-    def start(self):
-        """Démarre le capteur."""
-        self.is_active = True
-        print("Capteur démarré.")
+def send_data_to_receiver():
+    """Génère des données et les envoie au récepteur."""
+    data = generate_sensor_data()
+    print(f"Données générées : {data}")
+    response = process_data(data)
+    print(f"Réponse du récepteur : {response}")
 
-    def stop(self):
-        """Arrête le capteur."""
-        self.is_active = False
-        print("Capteur arrêté.")
+if __name__ == "__main__":
+    send_data_to_receiver()
 
-    def read_data(self):
-        """Simule la lecture des données du capteur."""
-        if not self.is_active:
-            raise RuntimeError("Le capteur n'est pas actif.")
-        
-        glucose_level = random.uniform(self.config.min_glucose, self.config.max_glucose)
-        return {"timestamp": time.time(), "glucose_level": glucose_level}
